@@ -52,7 +52,22 @@ pipeline {
             }
         }
 
-        
+
+        stage('Generate Jacoco Report') {
+            when {
+                expression {
+                    // Generate Jacoco report on the main branch or if the build is successful.
+                    return env.BRANCH_NAME == 'main' || currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                // Generate Jacoco Report.
+                sh 'echo "Generating Jacoco report"'
+                // Include the command to generate Jacoco report here.
+                
+            }
+
+            
         
         stage('Build Container') {
             when {
