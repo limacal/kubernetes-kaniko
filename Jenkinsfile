@@ -26,6 +26,7 @@ pipeline {
                 anyOf {
                     branch 'main'
                     branch 'feature'
+                    //branch 'playground'
                 }
             }
             steps {
