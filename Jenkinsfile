@@ -35,6 +35,23 @@ pipeline {
                 // Run CodeCoverage test here (UNABLE TO RUN THE CODECOVERAGE)
             }
         }
+
+        
+       stage('Run Other Tests') {
+            when {
+                // Run other Tests on non-main Branches.
+                not {
+                    expression {
+                        return env.BRANCH_NAME == 'main'
+                    }
+                }
+            }
+            steps {
+                sh 'echo "Running other tests"'
+                // Run other tests HERE.
+            }
+        }
+
         
         
         stage('Build Container') {
