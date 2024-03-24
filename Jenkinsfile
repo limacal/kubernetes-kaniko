@@ -23,11 +23,11 @@ pipeline {
         stage('Build Container') {
             when {
                 // Build container only for main and feature branches
-                anyOf {
-                    branch 'main'
-                    branch 'feature'
-                    //branch 'playground'
-                }
+                 //anyOf {
+                     //branch 'main'
+                     //branch 'feature'
+                     //branch 'playground'
+                //}
             }
             steps {
                 script {
