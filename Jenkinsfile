@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // Checkout the repository
                 checkout scm
             }
         }
@@ -15,7 +16,8 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'mvn clean test' // Example Maven command for tests
+                    // Example command to run CodeCoverage tests
+                    sh 'mvn clean test -P CodeCoverage'
                 }
             }
         }
@@ -23,11 +25,10 @@ pipeline {
         stage('Build Container') {
             when {
                 // Build container only for main and feature branches
-                 //anyOf {
-                     //branch 'main'
-                     //branch 'feature'
-                     //branch 'playground'
-                //}
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
             }
             steps {
                 script {
