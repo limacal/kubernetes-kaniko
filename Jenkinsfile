@@ -1,7 +1,6 @@
 pipeline {
     agent any
-
-    
+   
     stages {
         stage('Checkout') {
             steps {
@@ -40,7 +39,6 @@ pipeline {
             }
             steps {
                 script {
-                    
                     // Determine image name and version based on branch
                     def imageName = ''
                     def version = ''
@@ -50,17 +48,15 @@ pipeline {
                     } else if (env.BRANCH_NAME == 'feature') {
                         imageName = 'calculator-feature'
                         version = '0.1'
-                    }
-                    
+                    }                    
                     // Build and push container if tests succeed
                     docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                      docker.withRegistry('https://hub.docker.com/repositories/limacadmin', 'limacadmin') {
-                        docker.image("repository/${imageName}:${version}").push()
+                    docker.withRegistry('https://hub.docker.com/repositories/limacadmin', 'limacadmin') {
+                    docker.image("repository/${imageName}:${version}").push()
                     }
                 }
             }
         }
     }
-    
 }
