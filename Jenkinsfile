@@ -1,20 +1,6 @@
 pipeline {
     agent any
 
-    //---
-    triggers {
-        githubPush()
-    }
-//---
-
-    //---
-    when {
-        beforeAgent true // Ensures that the when directive is evaluated before allocating the agent
-        changeset 'pullRequest' // Trigger the pipeline only for pull requests
-    }
-    //---
-
-
     
     stages {
         stage('Checkout') {
