@@ -10,7 +10,7 @@ pipeline {
         }
 
         stage('Run Tests') {
-            steps {
+            
             when {
                 // Run tests only on main branch for CodeCoverage
                 branch 'main'
@@ -19,7 +19,7 @@ pipeline {
                     return env.BRANCH_NAME == 'main'
                 }
               }
-            }
+            
             steps {
                 script {
                     // Example command to run CodeCoverage tests
@@ -31,7 +31,7 @@ pipeline {
     }
 
         stage('Build Container') {
-            steps {
+            
             when {
                 // Build container only for main and feature branches
                 anyOf {
@@ -39,7 +39,7 @@ pipeline {
                     branch 'feature'
                 }
             }
-            }
+            
             steps {
                 script {
                     // Determine image name and version based on branch
