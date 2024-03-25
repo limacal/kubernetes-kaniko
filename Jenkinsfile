@@ -55,7 +55,7 @@ pipeline {
                     // Build and push container if tests succeed
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                        docker.withRegistry('https://hub.docker.com', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
+                        docker.withRegistry('https://hub.docker.com', '615f0bd7-3afd-4707-8f67-dc855c903522') { 
                         docker.image("repository/${imageName}:${version}").push() 
                     }
                 }
