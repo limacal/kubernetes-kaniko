@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    //---
+    triggers {
+        githubPush()
+    }
+//---
+   
     stages {
         stage('Checkout') {
             steps {
@@ -53,4 +59,12 @@ pipeline {
             }
         }
     }
+
+    //---
+    when {
+        beforeAgent true // Ensures that the when directive is evaluated before allocating the agent
+        changeset 'pullRequest' // Trigger the pipeline only for pull requests
+    }
+    //---
+    
 }
