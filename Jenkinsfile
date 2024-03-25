@@ -14,31 +14,21 @@ pipeline {
             when {
                 // Run tests only on main branch for CodeCoverage
                 branch 'main'
-            }
-            steps {
-                script {
-                    // Example command to run CodeCoverage tests
-                    sh 'mvn clean test -P CodeCoverage'
-                }
-            }
-        }
-
-
-        
-        stage('Run Tests') {
-            when {
                 // Run the CodeCoverage Test only on the MAIN Branch.
                 expression {
                     return env.BRANCH_NAME == 'main'
                 }
             }
             steps {
-                sh 'echo "Running CodeCoverage test"'
-                // Run CodeCoverage test here (UNABLE TO RUN THE CODECOVERAGE)
+                script {
+                    // Example command to run CodeCoverage tests
+                    sh 'mvn clean test -P CodeCoverage'
+                    //Running CodeCoverage Test Here
+                    sh 'echo "Running CodeCoverage test"'
+                }
             }
         }
-
-      
+    
 
         stage('Build Container') {
             when {
