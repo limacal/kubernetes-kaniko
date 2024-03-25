@@ -40,9 +40,6 @@ pipeline {
             }
             steps {
                 script {
-
-                    // Define the docker object
-                    def docker = tool 'docker'
                     
                     // Determine image name and version based on branch
                     def imageName = ''
