@@ -55,7 +55,7 @@ pipeline {
                     // Build and push container if tests succeed
                     docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                    docker.withRegistry('https://hub.docker.com/repositories/limac', 'limac') {
+                    docker.withRegistry('https://hub.docker.com/repositories/limacadmin', '78669e63-8246-4ce0-b0bb-2640c353b75d') {
                     docker.image("repository/${imageName}:${version}").push()
                     }
                 }
