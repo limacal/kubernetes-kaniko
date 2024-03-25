@@ -10,6 +10,7 @@ pipeline {
         }
 
         stage('Run Tests') {
+            steps {
             when {
                 // Run tests only on main branch for CodeCoverage
                 branch 'main'
@@ -17,6 +18,7 @@ pipeline {
                 expression {
                     return env.BRANCH_NAME == 'main'
                 }
+              }
             }
             steps {
                 script {
@@ -26,16 +28,17 @@ pipeline {
                     sh 'echo "Running CodeCoverage test"'
                 }
             }
-        }
-    
+    }
 
         stage('Build Container') {
+            steps {
             when {
                 // Build container only for main and feature branches
                 anyOf {
                     branch 'main'
                     branch 'feature'
                 }
+            }
             }
             steps {
                 script {
