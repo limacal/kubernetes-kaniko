@@ -55,7 +55,7 @@ pipeline {
                     // Build and push container if tests succeed
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                        docker.withRegistry('https://hub.docker.com/repositories/limacadmin/kaniko-demo-image:1.0', 'limacadmin') {
+                        docker.withRegistry('https://hub.docker.com/repositories/limacadmin/dockercred', 'limacadmin') {
                         docker.image("repository/${imageName}:${version}").push()
                         }
                 }
