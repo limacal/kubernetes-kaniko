@@ -56,7 +56,7 @@ pipeline {
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
                         //docker.withRegistry('https://https://hub.docker.com/repository/docker/limacadmin/${imageName}:${version}', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
-                          docker.withRegistry('https://hub.docker.com/repository/docker/limacal', 'limacal') { 
+                          docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
                        // Build Docker image
