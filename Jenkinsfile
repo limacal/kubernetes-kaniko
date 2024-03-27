@@ -65,7 +65,7 @@ pipeline {
                         //def dockerImage = docker.build("repository/${imageName}:${version}")
                         // Push Docker image to registry if tests succeed
                         //dockerImage.push() }
-                         docker.image("repository/${imageName}:${imageVersion}").push() }
+                         docker.image("repository/${imageName}:${version}").push() }
                     
                 }
             }
