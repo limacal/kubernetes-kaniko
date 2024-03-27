@@ -60,6 +60,7 @@ pipeline {
                     //}
                        // Build Docker image
                         def dockerImage = docker.build("repository/${imageName}:${version}")
+                        docker.withRegistry('https://hub.docker.registry.url', 'limacadmin') 
                         // Push Docker image to registry if tests succeed
                         dockerImage.push()
 
