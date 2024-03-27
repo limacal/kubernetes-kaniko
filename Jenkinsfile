@@ -59,7 +59,7 @@ pipeline {
                           //docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
                           docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
 
-                        sh "docker login -u limacadmin -p '********'"
+                       sh 'echo "Limacal@1979" | docker login -u limacadmin --password-stdin'
                         
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
