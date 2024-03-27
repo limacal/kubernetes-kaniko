@@ -56,6 +56,7 @@ pipeline {
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
                         //docker.withRegistry('https://hub.docker.com/repository/${imageName}:${version}', 'limacadmin') { 
+                    docker push limacadmin/calculator:tagname
                     docker.image("repository/${imageName}:${version}").push() 
                     //}
                 }
