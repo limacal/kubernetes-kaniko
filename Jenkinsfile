@@ -55,7 +55,7 @@ pipeline {
                     // Build and push container if tests succeed
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                        docker.withRegistry('ttps://hub.docker.com/repository/docker/limacadmin/calculator', 'limacadmin) { 
+                        docker.withRegistry('ttps://hub.docker.com/repository/docker/limacadmin', 'limacadmin) { 
                         docker.image("repository/${imageName}:${version}").push() 
                     }
                 }
