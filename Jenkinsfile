@@ -57,7 +57,7 @@ pipeline {
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
                         //docker.withRegistry('https://https://hub.docker.com/repository/docker/limacadmin/${imageName}:${version}', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
                           //docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
-                            docker.withRegistry('https://index.docker.io/v1/', 'limacadmin') { 
+                            docker.withRegistry('https://index.docker.io/v1/', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') //{ 
                     
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
@@ -65,7 +65,7 @@ pipeline {
                         //def dockerImage = docker.build("repository/${imageName}:${version}")
                         //def dockerImage = docker.build("repository/${imageName}:${version}")
                         // Push Docker image to registry if tests succeed
-                        dockerImage.push() }
+                        //dockerImage.push() }
 
                     
                 }
