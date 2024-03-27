@@ -59,8 +59,8 @@ pipeline {
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
                        // Build Docker image
-                        def dockerImage = docker.build("repository/${imageName}:${version}")
-                        docker.withRegistry('https://hub.docker.com/repository/${imageName}:${version}', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') 
+                        //def dockerImage = docker.build("repository/${imageName}:${version}")
+                        def dockerImage = docker.build('repository/${imageName}:${version}', '3b5fb42c-1913-4f3a-979b-a8d7fc115749')
                         // Push Docker image to registry if tests succeed
                         dockerImage.push()
 
