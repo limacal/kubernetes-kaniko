@@ -55,12 +55,12 @@ pipeline {
                     // Build and push container if tests succeed
                         docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
-                        //docker.withRegistry('https://hub.docker.com/repository/${imageName}:${version}', 'limacadmin') { 
+                        docker.withRegistry('https://https://hub.docker.com/repository/docker/limacadmin/${imageName}:${version}', 'limacadmin') { 
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
                        // Build Docker image
                         //def dockerImage = docker.build("repository/${imageName}:${version}")
-                        def dockerImage = docker.build("repository/${imageName}:${version}")
+                        //def dockerImage = docker.build("repository/${imageName}:${version}")
                         // Push Docker image to registry if tests succeed
                         dockerImage.push()
 
