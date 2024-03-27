@@ -53,11 +53,11 @@ pipeline {
                         version = '0.1'
                     }                    
                     // Build and push container if tests succeed
-                        docker.build("repository/${imageName}:${version}")
+                        //   docker.build("repository/${imageName}:${version}")
                     //docker.withRegistry('https://your.docker.registry.url', 'credentials-id') {
                         //docker.withRegistry('https://https://hub.docker.com/repository/docker/limacadmin/${imageName}:${version}', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
                           //docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
-                          //  docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
+                          docker.withRegistry('https://hub.docker.com/repository/docker/limacadmin', '3b5fb42c-1913-4f3a-979b-a8d7fc115749') { 
                     
                     //    docker.image("repository/${imageName}:${version}").push() 
                     //}
@@ -65,10 +65,8 @@ pipeline {
                         //def dockerImage = docker.build("repository/${imageName}:${version}")
                         // Push Docker image to registry if tests succeed
                         //dockerImage.push() }
-                        // docker.image("repository/${imageName}:${version}").push() }
-                       
-                        sh "echo \3b5fb42c-1913-4f3a-979b-a8d7fc115749 | docker login --username \3b5fb42c-1913-4f3a-979b-a8d7fc115749 --password-stdin \https://hub.docker.com/repository/docker/limacadmin"
-                }                   
+                        docker.image("repository/${imageName}:${version}").push() }
+                                 
                     
                 }
             }
