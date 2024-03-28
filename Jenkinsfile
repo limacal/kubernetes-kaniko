@@ -57,6 +57,7 @@ pipeline {
             }
             steps {
                 script {
+                    // Build and push container if tests succeed
                     docker.withRegistry('https://hub.docker.com', 'docker-credentials') {
                         def imageName
                         def imageVersion
