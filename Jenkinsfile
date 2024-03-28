@@ -14,7 +14,10 @@ pipeline {
             }
             steps {
                 script {
+                    // Example command to run CodeCoverage
                     sh 'mvn clean test -P CodeCoverage'
+                    //Running CodeCoverage Test Here 
+                    sh 'echo "Running CodeCoverage test"'
                 }
             }
         }
@@ -29,7 +32,7 @@ pipeline {
                     def imageName
                     def imageVersion
 
-                    //if Branch is equal "Main" Branch
+                    // Determine image name and version based on branch
                     if (env.BRANCH_NAME == 'main') {
                         imageName = 'calculator'
                         imageVersion = '1.0'
@@ -52,6 +55,7 @@ pipeline {
             }
             steps {
                 script {
+                    // Build and push container if tests succeed
                     docker.withRegistry('https://hub.docker.com', 'docker-credentials') {
                         def imageName
                         def imageVersion
