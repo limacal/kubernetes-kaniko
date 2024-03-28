@@ -16,10 +16,8 @@ pipeline {
                 script {
                     // Example command to run CodeCoverage
                     sh 'mvn clean test -P CodeCoverage'
-
                     //Running CodeCoverage Test Here 
                     sh 'echo "Running CodeCoverage test"'
-                    
                 }
             }
         }
