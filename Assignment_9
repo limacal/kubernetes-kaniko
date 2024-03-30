@@ -1,0 +1,45 @@
+pipeline {
+    //agent any
+    agent {
+        kubernetes { 
+            label 'POD_LABEL'
+        }
+    }
+    stages {
+        stage('Start Calculator') {
+            steps {
+                container('docker') {
+                    sh 'kubectl apply -f calculator.yaml -f hazelcast.yaml'
+                }
+            }
+        }
+
+        stage('Test Calculator') {
+            steps {
+                container('docker') {
+                    script {
+                        def result = sh(script: 'curl -s calculator-service:8080/div?a=6\\&b=2', returnStdout: true).trim()
+                        def expectedResult = '3.0'
+                        def errorMessage = 'Cannot divide by zero'
+                        
+                        if (result == expectedResult) {
+                            echo 'Division test passed'
+                        } else if (result.contains(errorMessage)) {
+                            error 'Division by zero error occurred'
+                        } else {
+                            error 'Division test failed'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            container('docker') {
+                sh 'kubectl delete -f calculator.yaml -f hazelcast.yaml'
+            }
+        }
+    }
+}
