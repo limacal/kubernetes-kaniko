@@ -7,8 +7,10 @@ pipeline {
     //    }
     //}
 
+node(POD_LABEL) {
+
     stages {
-        node(POD_LABEL) {
+        
 
         stage('Start Calculator') {
             steps {
@@ -39,7 +41,7 @@ pipeline {
                 }
             }
         }
-    }
+    
 
     post {
         always {
@@ -48,5 +50,6 @@ pipeline {
             }
         }
     }
+}
 }
 }
