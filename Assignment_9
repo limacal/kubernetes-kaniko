@@ -1,5 +1,5 @@
 pipeline {
-    //agent any
+    agent any
 
     //agent {
     //    kubernetes { 
@@ -7,11 +7,7 @@ pipeline {
     //    }
     //}
 
-node(POD_LABEL) {
-
     stages {
-        
-
         stage('Start Calculator') {
             steps {
                 container('docker') {
@@ -19,8 +15,6 @@ node(POD_LABEL) {
                 }
             }
         }
-
-
 
         stage('Test Calculator') {
             steps {
@@ -50,6 +44,5 @@ node(POD_LABEL) {
             }
         }
     }
-}
 }
 }
