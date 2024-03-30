@@ -2,7 +2,7 @@ pipeline {
     //agent any
     agent {
         kubernetes { 
-            label 'kubernetes'
+            label 'POD_LABEL'
         }
     }
     stages {
