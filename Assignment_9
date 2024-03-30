@@ -1,10 +1,10 @@
 pipeline {
-    agent any
-    //agent {
-    //    kubernetes { 
-    //        label 'POD_LABEL'
-    //    }
-    //}
+    //agent any
+    agent {
+        kubernetes { 
+            label 'kubernetes'
+        }
+    }
     stages {
         stage('Start Calculator') {
             steps {
