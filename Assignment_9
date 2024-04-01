@@ -1,9 +1,8 @@
 pipeline {
     agent any
-
     //agent {
-    //    kubernetes { 
-    //        label 'POD_LABEL'
+    //    kubernetes {
+    //        label 'kuber'            
     //    }
     //}
 
@@ -36,13 +35,12 @@ pipeline {
             }
         }
     
-
-    post {
-        always {
-            container('docker') {
-                sh 'kubectl delete -f calculator.yaml -f hazelcast.yaml'
-            }
-        }
-    }
+//    post {
+//        always {
+//            container('docker') {
+//                sh 'kubectl delete -f calculator.yaml -f hazelcast.yaml'
+//            }
+//       }
+//    }
 }
 }
